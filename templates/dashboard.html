@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Dashboard</title>
+</head>
+<body style="font-family: Arial; padding: 20px;">
+
+    <h1>Attendance Dashboard</h1>
+
+    <p>Total Present: {{ total_present }} | Total Absent: {{ total_absent }}</p>
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Employee</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+
+        {% for row in records %}
+        <tr>
+            <td>{{ row["employee_name"] }}</td>
+            <td>{{ row["date"] }}</td>
+            <td style="color: {{ 'green' if row['status'] == 'Present' else 'red' }};">
+                {{ row["status"] }}
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</body>
+</html>
